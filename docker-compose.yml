@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  hub:
+    image: greut/jupyterhub
+    build: .
+    ports:
+      - 80:8000
+  mail:
+    image: mailhog/mailhog:latest
+    ports:
+      - 8025:8025
