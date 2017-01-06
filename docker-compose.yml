@@ -4,6 +4,7 @@ services:
   hub:
     image: greut/jupyterhub
     build: .
+    hostname: irubyhub
     ports:
       - 80:8000
   mail:

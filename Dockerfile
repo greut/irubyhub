@@ -56,10 +56,11 @@ RUN update-alternatives \
 
 # Application
 RUN python3 -m pip install -U --no-cache-dir \
-        pip jupyterhub notebook
+        pip jupyterhub jupyterlab notebook
 RUN gem install \
         iruby ffi-rzmq pry pry-doc awesome_print activesupport erector \
  && iruby register --force \
+ && jupyter serverextension enable --py jupyterlab --sys-prefix \
  && ipython kernelspec install /root/.ipython/kernels/ruby
 RUN npm install -g configurable-http-proxy
 
