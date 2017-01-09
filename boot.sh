@@ -13,10 +13,11 @@ cat $INPUT | \
 do
     if [ $email != "-" ] && [ $email != "Email" ];
     then
-        adduser --gecos "" --disabled-password --force-badname $github
-        echo "$github:$email" | chpasswd
-        cp hello-ruby.ipynb /home/$github/hello-ruby.ipynb
-        chown $github:$github /home/$github/hello-ruby.ipynb
+        username=$(echo "$github" | tr '[:upper:]' '[:lower:]')
+        adduser --gecos "" --disabled-password $username
+        echo "$username:$email" | chpasswd
+        cp hello-ruby.ipynb /home/$username/hello-ruby.ipynb
+        chown $username:$username /home/$username/hello-ruby.ipynb
         echo "$email (@$github) created."
     fi
 
